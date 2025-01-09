@@ -10,7 +10,7 @@ const RecentQueries = () => {
       <div className="container mx-auto py-24">
         <h2 className="text-4xl font-black text-center mb-6 text-gray-800">Book Haven</h2>
         <p className="text-lg text-gray-500 italic text-center mb-10">Your go-to destination for discovering the latest must-read books and timeless classics.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4">
           {allBooks.map((book) => (
             <div
               key={book._id}
