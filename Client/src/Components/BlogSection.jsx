@@ -103,7 +103,7 @@ const BlogSection = () => {
           },
     ]
     return (
-        <section className="bg-gray-100 py-12 px-6">
+        <section className="bg-sky-100 py-24 px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-10">
@@ -119,7 +119,7 @@ const BlogSection = () => {
             {authors.map((author) => (
               <div
                 key={author.id}
-                className="mr-4  bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow max-w-md"
+                className="mr-4  bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow max-w-md h-96"
               >
                 {/* Author Profile */}
                 <div className="flex flex-col justify-center items-center p-4 border-b">

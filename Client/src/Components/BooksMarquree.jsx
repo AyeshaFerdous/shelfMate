@@ -17,7 +17,7 @@ const BooksMarquree = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-t from-sky-200 to-sky-100 py-10">
+    <div className="bg-gradient-to-t from-sky-200 to-sky-100 py-16">
       <h2 className="text-4xl font-black  text-center mb-6 text-gray-800">Latest Literary Treasures</h2>
       <p className="text-lg text-gray-500 italic text-center mb-10">Unveil fresh stories and exciting voices in today’s book world.</p>
       <Marquee gradient={false} speed={50} pauseOnHover={true}>

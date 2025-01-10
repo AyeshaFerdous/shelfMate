@@ -7,6 +7,11 @@ import moment from "moment";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 
+import { CiViewTable } from "react-icons/ci";
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { MdBrowserUpdated } from "react-icons/md";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { FcViewDetails } from "react-icons/fc";
 const MyQueries = () => {
   const { user, logOut } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
@@ -15,9 +20,17 @@ const MyQueries = () => {
   );
   const [book, setBook] = useState({});
   const [showModal, setShowModal] = useState(false);
-
+  const [view, setView] = useState('table'); 
   const navigate = useNavigate();
 
+
+
+
+  
+ 
+  const handleViewToggle = (viewType) => {
+    setView(viewType); 
+  };
   useEffect(() => {
     fetchAllBooks();
   }, [user]);
@@ -141,6 +154,7 @@ const MyQueries = () => {
     setShowModal(false);
   };
 
+
   return (
     <div>
       <Banner />
@@ -152,68 +166,148 @@ const MyQueries = () => {
           <p className="text-lg text-gray-700 ">
             Explore a curated selection of timeless books by celebrated authors.
           </p>
+
+          <div className="flex justify-end gap-4">
+          <button
+          onClick={() => handleViewToggle('table')}
+            className={'px-4 py-2 rounded bg-blue-500 text-white'}
+          >
+            <CiViewTable />
+          </button>
+          
+          <button
+          onClick={() => handleViewToggle('cards')}
+            className={'px-4 py-2 rounded bg-blue-500 text-white'}
+          >
+            <BsFillGrid3X3GapFill  />
+          </button>
+          </div>
+
         </div>
+
+        {view === 'table' ? (
+  <table className="w-full text-left dark:bg-black shadow-lg rounded-md">
+    <thead className="bg-sky-500 text-white">
+      <tr>
+        <th className="p-2 sm:p-4 rounded-tl-md">Image</th>
+        <th className="p-2 sm:p-4">Book Name</th>
+        <th className="p-2 sm:p-4">Book Brand</th>
+        <th className="p-2 sm:p-4 text-center rounded-tr-md">Actions</th>
+      </tr>
+    </thead>
+    <tbody  className="divide-y divide-gray-200">
+      {books?.length === 0 ? (
+        <tr>
+          <td colSpan="3" className="text-center text-gray-500 italic">
+            You haven't made any queries yet.
+          </td>
+        </tr>
+      ) : (
+        books?.map((book) => (
+          <tr key={book._id}>
+            <td className="p-2 sm:p-4">
+              <img
+                src={book.BookImage}
+                alt={book.BookName}
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-md object-cover"
+              />
+            </td>
+            <td className="p-2 sm:p-4 font-semibold dark:text-white">
+              {book.BookName}
+            </td>
+            <td className="p-2 sm:p-4 dark:text-white">
+              {book.BookBrand}
+            </td>
+            <td className="p-2 sm:p-4 text-center">
+              <div className="flex items-center justify-center gap-6">
+              <button
+                onClick={() => navigate(`/viewDetails/${book._id}`)}
+                className="text-xl text-blue-500"
+              >
+               <FcViewDetails />
+              </button>
+              <button
+                onClick={() => fetchBookData(book)}
+                className="text-xl text-yellow-500"
+              >
+                <MdBrowserUpdated />
+              </button>
+              <button
+                onClick={() => modernDelete(book._id)}
+                className="text-xl text-red-500"
+              >
+                <RiDeleteBin5Line />
+              </button>
+              </div>
+            </td>
+          </tr>
+        ))
+      )}
+    </tbody>
+  </table>
+) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {books.length === 0 ? (
-          <p className="text-center col-span-3 text-gray-500 italic">
-            You haven't made any queries yet.
-          </p>
-          ):(
-          books?.map((book, index) => (
-            <div
-              key={book._id}
-              className="w-full mx-auto border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl transition-shadow hover:scale-105 hover:transition-transform duration-300"
-            >
-              <div className="relative p-4">
-                <img
-                  src={book.BookImage}
-                  alt={book.BookName}
-                  className="w-full h-48 object-cover rounded-lg"
-                />
-              </div>
+            <p className="text-center col-span-3 text-gray-500 italic">
+              You haven't made any queries yet.
+            </p>
+          ) : (
+            books?.map((book, index) => (
+              <div
+                key={book._id}
+                className="w-full mx-auto border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl transition-shadow hover:scale-105 hover:transition-transform duration-300"
+              >
+                <div className="relative p-4">
+                  <img
+                    src={book.BookImage}
+                    alt={book.BookName}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
 
-              <div className="p-5">
-                <h2 className="text-lg font-semibold dark:text-white truncate">
-                  {book.BookName}
-                </h2>
-                <p className="text-sm dark:text-white">{book.BookBrand}</p>
+                <div className="p-5">
+                  <h2 className="text-lg font-semibold dark:text-white truncate">
+                    {book.BookName}
+                  </h2>
+                  <p className="text-sm dark:text-white">{book.BookBrand}</p>
 
-                <div className="flex justify-between gap-4 mt-4">
-                  <button
-                    onClick={() => navigate(`/viewDetails/${book._id}`)}
-                    className="btn py-3 px-6 relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group"
-                  >
-                    <span className="w-0 h-0 rounded bg-sky-500 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-                    <span className="w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white z-10">
-                      View Details
-                    </span>
-                  </button>
+                  <div className="flex justify-between gap-4 mt-4">
+                    <button
+                      onClick={() => navigate(`/viewDetails/${book._id}`)}
+                      className="btn py-3 px-6 relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group"
+                    >
+                      <span className="w-0 h-0 rounded bg-sky-500 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+                      <span className="w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white z-10">
+                        View Details
+                      </span>
+                    </button>
 
-                  <button
-                    onClick={() => fetchBookData(book)}
-                    className="btn py-3 px-6 relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group"
-                  >
-                    <span className="w-0 h-0 rounded bg-yellow-300 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-                    <span className="w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white z-10">
-                      Update
-                    </span>
-                  </button>
+                    <button
+                      onClick={() => fetchBookData(book)}
+                      className="btn py-3 px-6 relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group"
+                    >
+                      <span className="w-0 h-0 rounded bg-yellow-300 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+                      <span className="w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white z-10">
+                        Update
+                      </span>
+                    </button>
 
-                  <button
-                    onClick={() => modernDelete(book._id)}
-                    className="btn py-3 px-6 relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group"
-                  >
-                    <span className="w-0 h-0 rounded bg-red-400 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-                    <span className="w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white z-10">
-                      Delete
-                    </span>
-                  </button>
+                    <button
+                      onClick={() => modernDelete(book._id)}
+                      className="btn py-3 px-6 relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group"
+                    >
+                      <span className="w-0 h-0 rounded bg-red-400 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+                      <span className="w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white z-10">
+                        Delete
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
         </div>
+)}
       </div>
 
       {/* Modal for Update */}
