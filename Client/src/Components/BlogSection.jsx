@@ -104,16 +104,15 @@ const BlogSection = () => {
     ]
     return (
         <section className="bg-sky-100 py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
+        <div className="mx-auto">
+          
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-800">Meet the Authors</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-5">Meet the Authors</h2>
             <p className="text-gray-600">
               Get to know the minds behind your favorite blogs and their stories.
             </p>
           </div>
   
-          {/* Author Grid */}
           <Marquee gradient={false} speed={50} pauseOnHover={true}>
           
             {authors.map((author) => (
@@ -121,7 +120,7 @@ const BlogSection = () => {
                 key={author.id}
                 className="mr-4  bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow max-w-md h-96"
               >
-                {/* Author Profile */}
+                
                 <div className="flex flex-col justify-center items-center p-4 border-b">
                   <img
                     src={author.profileImage}
@@ -134,7 +133,7 @@ const BlogSection = () => {
                   </div>
                 </div>
   
-                {/* Blogs */}
+               
                 <div className="p-4">
                   <h4 className="text-lg font-semibold text-gray-800 mb-3">
                     Blogs by {author.name}:
