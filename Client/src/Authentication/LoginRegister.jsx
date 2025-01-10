@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-import bgLogin from '../assets/sky.jpg'
+import bgLogin from '../assets/bg2.jpg';
 import auth from "../Firebase/firebase.config";
 
 
@@ -88,8 +88,8 @@ const LoginRegister = () => {
   
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center p-4 bg-no-repeat bg-cover bg-center brightness-90" style={{backgroundImage: `url(${bgLogin})`}}>
-      <div className="bg-transparent shadow-xl rounded-3xl mt-28 w-full max-w-md overflow-hidden border border-[#60aee6]">
+    <div className="flex flex-col lg:flex-row items-center justify-center p-4 bg-no-repeat bg-cover bg-center brightness-75" style={{backgroundImage: `url(${bgLogin})`}}>
+      <div className="bg-transparent shadow-xl rounded-3xl mt-28 w-full max-w-md overflow-hidden border border-[#60aee6] backdrop-blur-sm">
         <div className="flex justify-center border-b">
           <button
             onClick={() => setIsLogin(true)}
@@ -113,7 +113,7 @@ const LoginRegister = () => {
           </button>
         </div>
 
-        <div className="p-8">
+        <div className="p-8 ">
           {isLogin ? (
             <div>
               <form onSubmit={handleSubmit} className="space-y-4">
