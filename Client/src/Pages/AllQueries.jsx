@@ -100,7 +100,7 @@ const AllQueries = () => {
           {books?.map((book, index) => (
             <div
               key={book._id}
-              className="w-full mx-auto border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl transition-shadow hover:scale-105 hover:transition-transform duration-300"
+              className="max-w-2xl mx-auto border border-gray-300 rounded-lg shadow-lg hover:shadow-2xl transition-shadow hover:scale-105 hover:transition-transform duration-300"
             >
               <div className="relative p-4">
                 <img
