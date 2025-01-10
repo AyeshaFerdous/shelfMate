@@ -1,12 +1,12 @@
-import { Link, NavLink, useLocation} from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import Logo2 from "../../assets/logo2.png";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const { pathname } = useLocation();
-   
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -19,7 +19,6 @@ const Navbar = () => {
       }
     };
 
-    
     // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
@@ -27,63 +26,68 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
- 
   const links = (
     <>
-       <li className="relative group">
-      <NavLink
-        to="/"
-        className={({ isActive }) => {
-          if (pathname === "/") {
-            return isActive
-              ? "active-link"
-              : "text-black font-bold hover:text-[#5bb4e6]";
-          } else {
-            return isActive
-              ? "active-link2"
-              : "text-slate-800 font-bold hover:text-[#5bb4e6]";
-          }
-        }}
-      >
-        Home
-      </NavLink>
-      {/* Dropdown menu */}
-      <ul className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-md w-40 z-10">
-        
-        <li>
-          <NavLink
-            to="/home/features"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white bg-[#5bb4e6] px-4 py-2 block"
-                : "text-slate-800 font-medium hover:bg-[#f0f8ff] px-4 py-2 block"
+      <li className="relative group">
+        <NavLink
+          to="/"
+          className={({ isActive }) => {
+            if (pathname === "/login") {
+              return isActive
+                ? "text-[#5bb4e6] font-bold"
+                : "text-white font-bold";
             }
-          >
-            Features
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/home/contact"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white bg-[#5bb4e6] px-4 py-2 block"
-                : "text-slate-800 font-medium hover:bg-[#f0f8ff] px-4 py-2 block"
+            if (pathname === "/") {
+              return isActive
+                ? "active-link"
+                : "text-black font-bold hover:text-[#5bb4e6]";
+            } else {
+              return isActive
+                ? "active-link2"
+                : "text-slate-800 font-bold hover:text-[#5bb4e6]";
             }
-          >
-            Contact Us
-          </NavLink>
-        </li>
-      </ul>
-    </li>
+          }}
+        >
+          Home
+        </NavLink>
+        {/* Dropdown menu */}
+        <ul className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-md w-40 z-10">
+          <li>
+            <NavLink
+              to="/home/features"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white bg-[#5bb4e6] px-4 py-2 block"
+                  : "text-slate-800 font-medium hover:bg-[#f0f8ff] px-4 py-2 block"
+              }
+            >
+              Features
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/home/contact"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white bg-[#5bb4e6] px-4 py-2 block"
+                  : "text-slate-800 font-medium hover:bg-[#f0f8ff] px-4 py-2 block"
+              }
+            >
+              Contact Us
+            </NavLink>
+          </li>
+        </ul>
+      </li>
 
-
-    <li>
+      <li>
         <NavLink
           to="/queries"
           className={({ isActive }) => {
-            // Check if the current path is "/"
+            if (pathname === "/login") {
+              return isActive
+                ? "text-[#5bb4e6] font-bold"
+                : "text-white font-bold";
+            }
             if (pathname === "/") {
               return isActive
                 ? "active-link"
@@ -98,85 +102,103 @@ const Navbar = () => {
           Queries
         </NavLink>
       </li>
-    {user && <>
-      <li>
-        <NavLink
-          to="/add-queries"
-          className={({ isActive }) => {
-           
-            if (pathname === "/") {
-              return isActive
-                ? "active-link"
-                : "text-black font-bold hover:text-[#5bb4e6]";
-            } else {
-              return isActive
-                ? "active-link2"
-                : "text-slate-800 font-bold hover:text-[#5bb4e6]";
-            }
-          }}
-        >
-          Add Queries
-        </NavLink>
-      </li>
-      
-      <li>
-        <NavLink
-          to="/recommendations-for-me"
-          className={({ isActive }) => {
-            // Check if the current path is "/"
-            if (pathname === "/") {
-              return isActive
-                ? "active-link"
-                : "text-black font-bold hover:text-[#5bb4e6]";
-            } else {
-              return isActive
-                ? "active-link2"
-                : "text-slate-800 font-bold hover:text-[#5bb4e6]";
-            }
-          }}
-        >
-          Recommendations For Me
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-queries"
-          className={({ isActive }) => {
-            // Check if the current path is "/"
-            if (pathname === "/") {
-              return isActive
-                ? "active-link"
-                : "text-black font-bold hover:text-[#5bb4e6]";
-            } else {
-              return isActive
-                ? "active-link2"
-                : "text-slate-800 font-bold hover:text-[#5bb4e6]";
-            }
-          }}
-        >
-          My Queries
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-recommendations"
-          className={({ isActive }) => {
-            // Check if the current path is "/"
-            if (pathname === "/") {
-              return isActive
-                ? "active-link"
-                : "text-black font-bold hover:text-[#5bb4e6]";
-            } else {
-              return isActive
-                ? "active-link2"
-                : "text-slate-800 font-bold hover:text-[#5bb4e6]";
-            }
-          }}
-        >
-          My Recommendations
-        </NavLink>
-      </li>
-    </>}
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/add-queries"
+              className={({ isActive }) => {
+                if (pathname === "/login") {
+                  return isActive
+                    ? "text-[#5bb4e6] font-bold"
+                    : "text-white font-bold";
+                }
+                if (pathname === "/") {
+                  return isActive
+                    ? "active-link"
+                    : "text-black font-bold hover:text-[#5bb4e6]";
+                } else {
+                  return isActive
+                    ? "active-link2"
+                    : "text-slate-800 font-bold hover:text-[#5bb4e6]";
+                }
+              }}
+            >
+              Add Queries
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/recommendations-for-me"
+              className={({ isActive }) => {
+                if (pathname === "/login") {
+                  return isActive
+                    ? "text-[#5bb4e6] font-bold"
+                    : "text-white font-bold";
+                }
+                if (pathname === "/") {
+                  return isActive
+                    ? "active-link"
+                    : "text-black font-bold hover:text-[#5bb4e6]";
+                } else {
+                  return isActive
+                    ? "active-link2"
+                    : "text-slate-800 font-bold hover:text-[#5bb4e6]";
+                }
+              }}
+            >
+              Recommendations For Me
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/my-queries"
+              className={({ isActive }) => {
+                if (pathname === "/login") {
+                  return isActive
+                    ? "text-[#5bb4e6] font-bold"
+                    : "text-white font-bold";
+                }
+                if (pathname === "/") {
+                  return isActive
+                    ? "active-link"
+                    : "text-black font-bold hover:text-[#5bb4e6]";
+                } else {
+                  return isActive
+                    ? "active-link2"
+                    : "text-slate-800 font-bold hover:text-[#5bb4e6]";
+                }
+              }}
+            >
+              My Queries
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/my-recommendations"
+              className={({ isActive }) => {
+                if (pathname === "/login") {
+                  return isActive
+                    ? "text-[#5bb4e6] font-bold"
+                    : "text-white font-bold";
+                }
+                if (pathname === "/") {
+                  return isActive
+                    ? "active-link"
+                    : "text-black font-bold hover:text-[#5bb4e6]";
+                } else {
+                  return isActive
+                    ? "active-link2"
+                    : "text-slate-800 font-bold hover:text-[#5bb4e6]";
+                }
+              }}
+            >
+              My Recommendations
+            </NavLink>
+          </li>
+        </>
+      )}
 
       {!user && (
         <>
@@ -184,7 +206,11 @@ const Navbar = () => {
             <NavLink
               to="/login"
               className={({ isActive }) => {
-                // Check if the current path is "/"
+                if (pathname === "/login") {
+                  return isActive
+                    ? "text-[#5bb4e6] font-bold"
+                    : "text-white font-bold";
+                }
                 if (pathname === "/") {
                   return isActive
                     ? "active-link"
@@ -205,9 +231,11 @@ const Navbar = () => {
   );
   return (
     <div
-    className={isScrolled
-      ? "fixed z-[1000] w-full top-0 backdrop-blur-md bg-opacity-70"
-      : "fixed z-[1000] w-full top-0"}
+      className={
+        isScrolled
+          ? "fixed z-[1000] w-full top-0 backdrop-blur-md bg-opacity-70"
+          : "fixed z-[1000] w-full top-0"
+      }
     >
       <div className="navbar gap-5 px-8">
         <div className="navbar-start">
@@ -235,7 +263,11 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <img className="w-52" src={Logo} alt="" />
+          {pathname === "/login" ? (
+            <img className="w-52" src={Logo2} alt="" />
+          ) : (
+            <img className="w-52" src={Logo} alt="" />
+          )}
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal px-1 gap-4">{links}</ul>

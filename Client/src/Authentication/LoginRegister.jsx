@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-import bgLogin from '../assets/bg2.jpg';
+import bgLogin from '../assets/bg.jpg';
 import auth from "../Firebase/firebase.config";
 
 
@@ -88,8 +88,8 @@ const LoginRegister = () => {
   
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center p-4 bg-no-repeat bg-cover bg-center brightness-75" style={{backgroundImage: `url(${bgLogin})`}}>
-      <div className="bg-transparent shadow-xl rounded-3xl mt-28 w-full max-w-md overflow-hidden border border-[#60aee6] backdrop-blur-sm">
+    <div className="p-4  bg-no-repeat bg-cover bg-center" style={{backgroundImage: `url(${bgLogin})`}}>
+      <div className="bg-transparent shadow-xl rounded-3xl mt-28 w-full max-w-md overflow-hidden border border-[#60aee6] backdrop-blur-sm md:ml-20">
         <div className="flex justify-center border-b">
           <button
             onClick={() => setIsLogin(true)}
@@ -117,14 +117,14 @@ const LoginRegister = () => {
           {isLogin ? (
             <div>
               <form onSubmit={handleSubmit} className="space-y-4">
-              <h2 className="text-2xl font-bold  text-center">
+              <h2 className="text-2xl font-bold text-gray-300  text-center">
                   Welcome Back
                 </h2>
-                <p className="text-center text-gray-500 mb-6">
+                <p className="text-center text-gray-300 mb-6">
                   Login to your account
                 </p>
                 <div>
-                  <label className="block text-sm font-medium ">Email</label>
+                  <label className="block text-sm text-gray-300 font-medium ">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -134,7 +134,7 @@ const LoginRegister = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600">
+                  <label className="block text-sm font-medium text-gray-300">
                     Password
                   </label>
                   <input
@@ -168,7 +168,7 @@ const LoginRegister = () => {
                 </button>
               </div>
              
-              <p className="text-center font-semibold">
+              <p className="text-center font-semibold text-gray-300">
                 Don't have an account?{" "}
                 <Link className="text-[#5bb4e6]" onClick={() => setIsLogin(false)} >
                   Register
@@ -178,14 +178,14 @@ const LoginRegister = () => {
           ) : (
              <div>
             <form onSubmit={handleRegister} className="space-y-4">
-              <h2 className="text-2xl font-bold  text-center">
+              <h2 className="text-2xl font-bold text-gray-300 text-center">
                 Create Account
               </h2>
-              <p className="text-center text-gray-500 mb-6">
+              <p className="text-center text-gray-300 mb-6">
                 Sign up for a new account
               </p>
               <div>
-                <label className="block text-sm font-medium ">Name</label>
+                <label className="block text-sm text-gray-300 font-medium">Name</label>
                 <input
                   type="text"
                   name="name"
@@ -195,7 +195,7 @@ const LoginRegister = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium ">Photo URL</label>
+                <label className="block text-sm text-gray-300 font-medium ">Photo URL</label>
                 <input
                   type="text"
                   name="photo"
@@ -205,7 +205,7 @@ const LoginRegister = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium ">Email</label>
+                <label className="block text-sm text-gray-300 font-medium ">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -215,7 +215,7 @@ const LoginRegister = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium ">Password</label>
+                <label className="block text-sm text-gray-300 font-medium ">Password</label>
                 <input
                   type="password"
                   name="password"
@@ -248,7 +248,7 @@ const LoginRegister = () => {
                 </button>
               </div>
 
-              <p className="text-center font-semibold">
+              <p className="text-center text-gray-300 font-semibold">
                 Don't have an account?{" "}
                 <Link className="text-[#60aee6]" onClick={() => setIsLogin(true)}>
                   LogIn
