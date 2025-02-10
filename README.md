@@ -3,7 +3,7 @@
 Shelfmate is a Product Recommendation platform designed to help users explore alternative products, share their queries, and provide recommendations. It is a user-friendly and fully responsive platform that facilitates meaningful interactions about products and their alternatives.
 
 ## Live Demo
-[Live Website Link](https://your-live-link.com)
+[Live Website Link](https://shelfmate-81012.web.app/)
 
 ---
 
