@@ -38,7 +38,7 @@ const AllQueries = () => {
   
   return (
     <div className="my-28 mx-4">
-     
+         <h2 className="text-4xl font-black text-center mb-6 text-[#45a3d8]">BookWanderer</h2>
        <div className="flex flex-col lg:flex-row justify-center items-center gap-5 mt-5">
 
        <div className="flex justify-center space-x-4 ">
@@ -77,13 +77,13 @@ const AllQueries = () => {
             <span className="relative">Search</span>
           </button>
         </div>
-        <div>
+        <div className="p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
             <select
               name='date'
               id='date'
               onChange={e=> setSort(e.target.value)}
               value={sort}
-              className='border p-4 rounded-md'
+              className=' px-6 py-2 text-gray-700 placeholder-gray-500  outline-none'
             >
               <option value=''>Sort By Date And Time</option>
               <option value='dsc'>Descending Order</option>
