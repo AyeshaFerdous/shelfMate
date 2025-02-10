@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,6 +11,11 @@ import "swiper/css/navigation";
 import { Autoplay,  Navigation } from 'swiper/modules';
 
 const Slider = () => {
+  const navigate = useNavigate();
+
+  const handleAddQuery = () => {
+    navigate("/add-queries"); 
+  };
   const slideData = [
     {
       image: "https://i.ibb.co.com/PDqGD5d/DALL-E-2024-12-22-02-16-35-A-stack-of-colorful-books-arranged-neatly-on-a-wooden-shelf-The-books-hav.webp",
@@ -63,7 +69,7 @@ const Slider = () => {
               <div className="absolute bottom-40 left-6 text-white p-6 rounded-lg max-w-lg">
                 <h2 className="text-2xl font-bold mb-4 ">{slide.title}</h2>
                 <p className="text-5xl font-bold mb-4 text-white ">{slide.description}</p>
-                <button className="bg-orange-500 hover:bg-orange-600 text-white py-2 px-6 rounded-lg">
+                <button  onClick={handleAddQuery} className="bg-orange-500 hover:bg-orange-600 text-white py-2 px-6 rounded-lg">
                   Add Query
                 </button>
               </div>
