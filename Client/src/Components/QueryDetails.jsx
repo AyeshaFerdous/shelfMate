@@ -89,7 +89,7 @@ const QueryDetails = () => {
   return (
     <>
       <div className="flex flex-col md:flex-row justify-around gap-5 items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto my-28">
-        <div className="flex-1 px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]">
+        <div className="flex-1 px-4 py-7 bg-sky-50 rounded-md shadow-md md:min-h-[350px]">
           <h1 className="mt-2 text-3xl font-semibold text-gray-800">
             {BookName}
           </h1>
@@ -112,7 +112,7 @@ const QueryDetails = () => {
             )}
           </div>
         </div>
-        <section className="p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[350px]">
+        <section className="p-6 w-full bg-sky-50 rounded-md shadow-md flex-1 md:min-h-[350px]">
           <h2 className="text-lg font-semibold text-gray-700">
             Add Recommendation
           </h2>
