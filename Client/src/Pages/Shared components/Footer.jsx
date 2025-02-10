@@ -51,8 +51,8 @@ const Footer = () => {
                 <li><Link to="/queries" className="hover:text-white">Queries</Link></li>
                 <li><Link to="/my-queries" className="hover:text-white">My Queries</Link></li>
                 <li><Link to="/add-queries" className="hover:text-white">Add Queries</Link></li>
-                <li><Link to="/recommendations-for-me" className="hover:text-white"></Link>Recommendations For me</li>
-                <li><Link to="/my-recommendations" className="hover:text-white"></Link>My Recommendations</li>
+                <li><Link to="/recommendations-for-me" className="hover:text-white">Recommendations For me</Link></li>
+                <li><Link to="/my-recommendations" className="hover:text-white">My Recommendations</Link></li>
                 <li><Link to="/home/contact" className="hover:text-white">Contact</Link></li>
               </ul>
             </div>
@@ -94,7 +94,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-center py-2">
               <p className="text-sm">
-                &copy; 2024 ATHLEON. All rights reserved.
+                &copy; 2024 ShelfMate. All rights reserved.
               </p>
               <p>Designed with ❤️ by Ayesha's Team.</p>
             </div>
